@@ -18,7 +18,7 @@ def submit(request):
 	form = StudentForm(request.POST)
 	form.is_valid()
 	clean = form.cleaned_data
-	entry = Student(university = clean['university'], first_name = clean['first_name'], last_name = clean['last_name'],
+	entry = Student(university = clean['university'].lower(), first_name = clean['first_name'], last_name = clean['last_name'],
 					email = clean['email'], department = clean['department'].upper(), course_number = clean['course_number'].upper(), 
 					course_type = clean['course_type'].lower(), section = clean['section'], bio = clean['bio'])
 	entry.save()
@@ -31,7 +31,7 @@ def result(request):
 	form = StudentForm(request.POST)
 	form.is_valid()
 	clean = form.cleaned_data
-	students = Student.objects.filter(university=clean['university']).filter(department=clean['department'].upper()).filter(course_number=clean['course_number'].upper())
+	students = Student.objects.filter(university=clean['university'].lower()).filter(department=clean['department'].upper()).filter(course_number=clean['course_number'].upper())
 	if 'course_type' in clean:
 		students = students.filter(course_type=clean['course_type'].lower())
 		if 'section' in clean:
