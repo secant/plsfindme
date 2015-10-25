@@ -25,8 +25,6 @@ SECRET_KEY = "9102tcgc=ng4b_n3!+_-dp(khb2f)vqxwt*3(-#2dd3@!!3kpw"
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-TEMPLATE_DEBUG = True
-
 
 # Application definition
 
@@ -59,6 +57,7 @@ TEMPLATES = [
         'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
+            'debug': DEBUG,
             'context_processors': [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
