@@ -1,6 +1,5 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
-from django.views.generic import TemplateView
 
 from findme.apps.student import views
 
@@ -10,5 +9,10 @@ urlpatterns = [
     # url(r'^blog/', include('blog.urls')),
 
     # url(r'^admin/', include(admin.site.urls)),
-    url(r'^$', TemplateView.as_view(template_name='home.html')),
+    url(r'^$', views.home, name='home'),
+    url(r'^form/$', views.form, name='form'),
+    url(r'^submit/$', views.submit, name='submit'),
+    url(r'^search/$', views.search, name='search'),
+    url(r'^result/$', views.result, name='result'),
+    url(r'^about/$', views.about, name='about'),
 ]
